@@ -1,0 +1,29 @@
+api_platform:
+    title: Hello API Platform
+    version: 1.0.0
+    show_webby: false
+    defaults:
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+
+        # Pagination configuration
+        pagination_client_enabled: true
+        pagination_client_items_per_page: true
+        # Disable counting items in collections, activate it for large collections, it removes the "last" link in the pagination
+        # pagination_partial: trueapi_platform:
+
+        # Subresources configuration
+        enable_link_security: true
+    collection:
+      pagination:
+        enabled_parameter_name: pagination
+        items_per_page_parameter_name: itemsPerPage
+    swagger:
+      api_keys:
+          Authorization:
+              name: X-Api-Key
+              type: header
+
+
+
