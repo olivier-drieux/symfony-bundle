@@ -9,20 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class SecurityController extends AbstractController
 {
-    #[Route('api/login', name: 'app_login', methods: ['POST'])]
-    public function login(#[CurrentUser] ?User $user): JsonResponse
+    #[Route('/auth/login', name: 'auth_login', methods: ['POST'])]
+    public function login(): JsonResponse
     {
-        if (null === $user) {
-            return $this->json([
-                'message' => 'missing credentials',
-            ], Response::HTTP_UNAUTHORIZED);
-        }
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/SecurityController.php',
-        ]);
+        // L'authentification est gérée par LoginAuthenticator, cette méthode ne sera jamais atteinte
+        // si l'authentification échoue (une réponse sera renvoyée avant).
+        throw new \LogicException('This should not be reached!');
     }
 }
