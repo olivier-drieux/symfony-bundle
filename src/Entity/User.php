@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->apiKey = bin2hex(random_bytes(ApiKeyAuthenticator::API_KEY_LENGTH));
+        $this->apiKey = bin2hex(random_bytes(64));
     }
 
     public function getId(): ?Uuid

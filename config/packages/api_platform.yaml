@@ -11,7 +11,7 @@ api_platform:
         pagination_client_enabled: true
         pagination_client_items_per_page: true
         # Disable counting items in collections, activate it for large collections, it removes the "last" link in the pagination
-        # pagination_partial: trueapi_platform:
+        # pagination_partial: true
 
         # Subresources configuration
         enable_link_security: true
