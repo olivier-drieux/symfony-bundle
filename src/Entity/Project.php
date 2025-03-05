@@ -13,9 +13,7 @@ use Ramsey\Uuid\UuidInterface;
 
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-#[ApiResource(
-
-)]
+#[ApiResource]
 class Project
 {
     #[ORM\Id]
@@ -27,7 +25,7 @@ class Project
     /**
      * @var Collection List of ProjectMockups associated with the Project
      */
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectMockup::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: ProjectMockup::class, mappedBy: 'project', cascade: ['persist', 'remove'])]
     #[ApiFilter(SearchFilter::class, properties: ['projectMockups.domainName' => 'ipartial'])]
     private Collection $projectMockups;
 

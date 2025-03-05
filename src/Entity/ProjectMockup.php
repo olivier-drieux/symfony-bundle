@@ -4,46 +4,47 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
+use ApiPlatform\Metadata\Post;
 use App\Repository\ProjectMockupRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Post;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: ProjectMockupRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource(
     uriTemplate: '/projects/{projectId}/mockups',
+    operations: [new GetCollection()],
     uriVariables: [
-        'projectId' => new Link(fromClass: Project::class, toProperty: 'project', description: 'The project to which the mockup belongs')
-    ],
-    operations: [new GetCollection()]
+        'projectId' => new Link(toProperty: 'project', fromClass: Project::class, description: 'The project to which the mockup belongs')
+    ]
 )]
 #[ApiResource(
     uriTemplate: '/projects/{projectId}/mockups/{id}',
+    operations: [new Get()],
     uriVariables: [
-        'projectId' => new Link(fromClass: Project::class, toProperty: 'project', description: 'The project to which the mockup belongs'),
+        'projectId' => new Link(toProperty: 'project', fromClass: Project::class, description: 'The project to which the mockup belongs'),
         'id' => new Link(fromClass: ProjectMockup::class),
-    ],
-    operations: [new Get()]
+    ]
 )]
 #[ApiResource(
     uriTemplate: '/projects/{projectId}/mockups',
+    operations: [new Post()],
     uriVariables: [
-        'projectId' => new Link(fromClass: Project::class, toProperty: 'project', description: 'The project to which the mockup belongs')
-    ],
-    operations: [new Post()]
+        'projectId' => new Link(toProperty: 'project', fromClass: Project::class, description: 'The project to which the mockup belongs')
+    ]
 )]
 #[ApiResource(
     uriTemplate: '/projects/{projectId}/mockups/{id}',
+    operations: [new Delete()],
     uriVariables: [
-        'projectId' => new Link(fromClass: Project::class, toProperty: 'project', description: 'The project to which the mockup belongs'),
+        'projectId' => new Link(toProperty: 'project', fromClass: Project::class, description: 'The project to which the mockup belongs'),
         'id' => new Link(fromClass: ProjectMockup::class),
-    ],
-    operations: [new Delete()]
+    ]
 )]
 class ProjectMockup
 {
@@ -60,7 +61,7 @@ class ProjectMockup
      * @var Project
      */
     #[ORM\ManyToOne(targetEntity: Project::class, cascade: ['persist'], inversedBy: 'projectMockups')]
-    #[ORM\JoinColumn(name: 'project_id', referencedColumnName: 'id', nullable: false)]
+    #[Groups(['project:read'])]
     private Project $project;
 
     /**

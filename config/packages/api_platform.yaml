@@ -2,6 +2,7 @@ api_platform:
     title: Hello API Platform
     version: 1.0.0
     show_webby: false
+
     defaults:
         stateless: true
         cache_headers:
@@ -15,6 +16,9 @@ api_platform:
 
         # Subresources configuration
         enable_link_security: true
+
+        # Enable denormalization errors of incoming data for all resources
+        collectDenormalizationErrors: true
     collection:
       pagination:
         enabled_parameter_name: pagination
@@ -25,5 +29,11 @@ api_platform:
         JWT:
           name: Authorization
           type: header
+      swagger_ui_extra_configuration:
+        persistAuthorization: true
+        filter: true
+        docExpansion: none
+        operationsSorter: method
+        defaultModelsExpandDepth: -1
 
 
