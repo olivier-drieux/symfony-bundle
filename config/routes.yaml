@@ -4,10 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-# Redirect / to /api
-#root:
-#    path: /
-#    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
-#    defaults:
-#        path: '/api'
-#        permanent: true
+auth:
+    path: /auth
+    methods: ['POST']

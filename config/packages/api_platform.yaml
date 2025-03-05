@@ -19,11 +19,11 @@ api_platform:
       pagination:
         enabled_parameter_name: pagination
         items_per_page_parameter_name: itemsPerPage
+
     swagger:
       api_keys:
-          Authorization:
-              name: X-Api-Key
-              type: header
-
+        JWT:
+          name: Authorization
+          type: header
 
 

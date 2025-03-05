@@ -5,7 +5,7 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        users:
             entity:
                 class: App\Entity\User
                 property: email
@@ -14,28 +14,22 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        # This firewall is used for the API
-        api:
-            pattern: ^/api
-            stateless: true
-            custom_authenticators:
-                - App\Security\ApiKeyAuthenticator
-            logout: false
-
-        # This firewall is used for normal login
         main:
-            pattern: ^/auth
             stateless: true
-            custom_authenticators:
-                - App\Security\LoginAuthenticator
-            logout: false
+            provider: users
+            json_login:
+                check_path: auth # The name in routes.yaml is enough for mapping
+                username_path: email
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            jwt: ~
 
     access_control:
-        - { path: ^/api$, roles: PUBLIC_ACCESS }
-        - { path: ^/api/docs.jsonopenapi$, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: ROLE_USER }
-        - { path: ^/auth/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
+        - { path: ^/api/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
+        - { path: ^/api/auth, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
