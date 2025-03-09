@@ -22,10 +22,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     protected UuidInterface $id;
 
     #[ORM\Column(length: 180)]
-    private ?string $email = null;
+    private string $email;
 
     #[ORM\Column]
-    private string $apiKey;
+    private string $username;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $apiKey = null;
 
     /**
      * @var list<string> The user roles
@@ -39,17 +42,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    public function __construct()
-    {
-        $this->apiKey = bin2hex(random_bytes(64));
-    }
-
     public function getId(): ?Uuid
     {
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -57,6 +55,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
 
         return $this;
     }

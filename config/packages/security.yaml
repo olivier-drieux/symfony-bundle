@@ -8,27 +8,31 @@ security:
         users:
             entity:
                 class: App\Entity\User
-                property: email
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+        jwt_login:
+            pattern: ^/auth
             stateless: true
             provider: users
             json_login:
-                check_path: auth # The name in routes.yaml is enough for mapping
+                check_path: /auth
                 username_path: email
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        api:
+            pattern: ^/api
+            stateless: true
             jwt: ~
+            custom_authenticator: App\Security\ApiKeyAuthenticator
 
     access_control:
+        - { path: ^/auth, roles: PUBLIC_ACCESS }
         - { path: ^/api$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
         - { path: ^/api/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
-        - { path: ^/api/auth, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
 when@test:

@@ -29,6 +29,10 @@ api_platform:
         JWT:
           name: Authorization
           type: header
+        API_KEY:
+          name: x-api-key
+          type: header
+
       swagger_ui_extra_configuration:
         persistAuthorization: true
         filter: true
