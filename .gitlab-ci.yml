@@ -13,7 +13,22 @@ deploy:
     - echo "$SSH_PRIVATE_KEY_B64" | base64 -d > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - ssh-keyscan -p 32 -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
-    - rsync -avz -e "ssh -p 32" --delete --exclude ".env.prod.local" --exclude "private/" --exclude 'var/' --exclude 'vendor/' ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
-    - ssh -p 32 "$DEPLOY_USER@$DEPLOY_HOST" -t "cd $DEPLOY_PATH && composer install --no-dev --optimize-autoloader && php bin/console cache:clear && php bin/console assets:install && php bin/console cache:warmup"
+    - |
+      rsync -avz -e "ssh -p 32" --delete \
+        --exclude=.env.local \
+        --exclude=.env.*.local \
+        --exclude="private/" \
+        --exclude="var/" \
+        --exclude="vendor/" \
+        --exclude="node_modules/" \
+        --exclude="public/build/" \
+        --exclude="public/uploads/" \
+        ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+    - |
+      ssh -p 32 "$DEPLOY_USER@$DEPLOY_HOST" -t "cd $DEPLOY_PATH && \
+        composer install --no-dev --optimize-autoloader && \
+        php bin/console cache:clear && \
+        php bin/console assets:install && \
+        php bin/console cache:warmup"
   only:
     - master
