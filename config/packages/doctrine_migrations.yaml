@@ -1,6 +1,2 @@
 doctrine_migrations:
     enable_profiler: false
-
-    migrations_paths:
-        'App\Migrations': '%kernel.project_dir%/migrations'
-        'App\LinkwebBundle\WebAgencyBundle\Migrations': '%kernel.project_dir%/src/LinkwebBundle/WebAgencyBundle/src/Migrations'
