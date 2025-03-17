@@ -64,9 +64,6 @@
             "config/packages/lexik_jwt_authentication.yaml"
         ]
     },
-    "linkweb/shared-bundle": {
-        "version": "1.0.0"
-    },
     "nelmio/cors-bundle": {
         "version": "2.5",
         "recipe": {

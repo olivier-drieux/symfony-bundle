@@ -12,5 +12,5 @@ return [
     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
-    Linkweb\SharedBundle\SharedBundle::class => ['all' => true],
+    App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle::class => ['all' => true],
 ];
