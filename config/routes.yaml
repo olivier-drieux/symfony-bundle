@@ -7,3 +7,7 @@ controllers:
 auth:
     path: /auth
     methods: ['POST']
+
+linkweb_shared_bundle:
+    resource: '@SharedBundle/src/Controller/'
+    type: attribute

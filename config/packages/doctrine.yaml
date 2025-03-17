@@ -24,6 +24,11 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            SharedBundle:
+                type: attribute
+                dir: '%kernel.project_dir%/vendor/linkweb/shared-bundle/src/Entity'
+                prefix: 'Linkweb\SharedBundle\Entity'
+                alias: SharedBundle
         controller_resolver:
             auto_mapping: false
 
