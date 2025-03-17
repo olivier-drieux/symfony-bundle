@@ -13,4 +13,6 @@ return [
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle::class => ['all' => true],
+    App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle::class => ['all' => true],
+    App\LinkwebBundle\WebScrapingBundle\WebScrapingBundle::class => ['all' => true],
 ];

@@ -1,15 +1,17 @@
 <?php
 
-namespace App\LinkwebBundle\WebAgencyBundle;
+namespace App\LinkwebBundle\WebScrapingBundle;
 
 use App\LinkwebBundle\Traits\AbstractBundleTrait;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Config\FileLocator;
 /**
  * @link https://symfony.com/doc/current/bundles/best_practices.html
  */
-class WebAgencyBundle extends AbstractBundle
+class WebScrapingBundle extends AbstractBundle
 {
     use AbstractBundleTrait;
 

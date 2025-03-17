@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkwebBundle\Constant;
+namespace App\LinkwebBundle\Constant;
 
 class SharedTables
 {

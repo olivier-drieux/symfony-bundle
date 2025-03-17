@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\LinkwebBundle\WebAgencyBundle\:
+        resource: '../*'
+        exclude: '../{DependencyInjection,Entity,Tests,Kernel.php}'

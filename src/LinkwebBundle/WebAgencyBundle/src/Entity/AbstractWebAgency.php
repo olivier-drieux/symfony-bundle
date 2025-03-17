@@ -1,9 +1,9 @@
 <?php
 
-namespace App\LinkwebBundle\WebAgencyBundle\Entity;
+namespace App\LinkwebBundle\WebAgencyBundle\src\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use LinkwebBundle\Constant\SharedTables;
+use App\LinkwebBundle\Constant\SharedTables;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
