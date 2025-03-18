@@ -2,7 +2,9 @@
 
 namespace App\LinkwebBundle\WebAgencyBundle;
 
+use App\Entity\WebAgency;
 use App\LinkwebBundle\Traits\AbstractBundleTrait;
+use App\LinkwebBundle\Utils\BundleHandler;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
@@ -16,13 +18,15 @@ class WebAgencyBundle extends AbstractBundle
     {
         parent::build($container);
 
-        // Ensure DoctrineMigrationsBundle is loaded inside the bundle
-        if (!class_exists(DoctrineMigrationsBundle::class)) {
-            throw new \LogicException('DoctrineMigrationsBundle is not installed in the bundle.');
-        }
-
-        // Ensure the extension is being executed
-        dump('WebAgencyBundle build() is executing...');
+        BundleHandler::setup(
+            'WebScrapingBundle',
+            $container,
+            [
+                'envs' => [],
+                'bundles' => [DoctrineMigrationsBundle::class],
+                'classes' => [],
+            ]
+        );
     }
 
     public function getContainerExtension(): WebAgencyExtension|null
