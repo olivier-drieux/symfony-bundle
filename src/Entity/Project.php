@@ -29,9 +29,6 @@ class Project
     #[ApiFilter(SearchFilter::class, properties: ['projectMockups.domainName' => 'ipartial'])]
     private Collection $projectMockups;
 
-    /**
-     * @var string
-     */
     #[ORM\Column(name: 'name', type: 'string')]
     #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     private string $name;
@@ -41,23 +38,14 @@ class Project
      */
     private string $status;
 
-    /**
-     * @var array
-     */
     #[ORM\Column(name: 'data', type: 'json')]
     private array $data = [];
 
-    /**
-     * @var \DateTimeImmutable
-     */
     #[ORM\Column(name: 'created_at', type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
 
-    /**
-     * @var \DateTimeImmutable|null
-     */
     #[ORM\Column(name: 'updated_at', type: 'datetime_immutable', nullable: true)]
-    private \DateTimeImmutable|null $updatedAt = null;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()
     {
@@ -75,7 +63,7 @@ class Project
     {
         $this->updatedAt = new \DateTimeImmutable();
     }
-    
+
     public function getId(): UuidInterface
     {
         return $this->id;
@@ -89,11 +77,6 @@ class Project
         return $this->projectMockups->getValues();
     }
 
-    /**
-     * @param ProjectMockup $projectMockup
-     *
-     * @return self
-     */
     public function addProjectMockup(ProjectMockup $projectMockup): self
     {
         if (false === $this->projectMockups->contains($projectMockup)) {
@@ -104,11 +87,6 @@ class Project
         return $this;
     }
 
-    /**
-     * @param ProjectMockup $projectMockup
-     *
-     * @return self
-     */
     public function removeProjectMockup(ProjectMockup $projectMockup): self
     {
         if ($this->projectMockups->contains($projectMockup)) {
@@ -118,19 +96,11 @@ class Project
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return self
-     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -156,19 +126,11 @@ class Project
         return 'mockup';
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return $this->data;
     }
 
-    /**
-     * @param array $data
-     *
-     * @return self
-     */
     public function setData(array $data): self
     {
         $this->data = $data;

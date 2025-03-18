@@ -5,7 +5,6 @@ namespace App\LinkwebBundle\WebScrapingBundle\src\ApiResource;
 use ApiPlatform\Metadata;
 use ApiPlatform\OpenApi\Model;
 use Linkweb\Annotation\ApiResource;
-use Linkweb\Constant\Device;
 use Linkweb\Constant\ResponseMessage;
 use Symfony\Component\HttpFoundation\Response;
 

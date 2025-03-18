@@ -2,9 +2,9 @@
 
 namespace App\LinkwebBundle\WebAgencyBundle\src\Migrations;
 
+use App\LinkwebBundle\Constant\SharedTables;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
-use App\LinkwebBundle\Constant\SharedTables;
 
 final class Version20250317000001 extends AbstractMigration
 {

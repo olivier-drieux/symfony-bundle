@@ -2,15 +2,13 @@
 
 namespace App\LinkwebBundle\WebAgencyBundle;
 
-use App\Entity\WebAgency;
-use App\LinkwebBundle\Traits\AbstractBundleTrait;
 use App\LinkwebBundle\Utils\BundleHandler;
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 /**
- * @link https://symfony.com/doc/current/bundles/best_practices.html
+ * @see https://symfony.com/doc/current/bundles/best_practices.html
  */
 class WebAgencyBundle extends AbstractBundle
 {
@@ -29,7 +27,7 @@ class WebAgencyBundle extends AbstractBundle
         );
     }
 
-    public function getContainerExtension(): WebAgencyExtension|null
+    public function getContainerExtension(): ?WebAgencyExtension
     {
         return new WebAgencyExtension();
     }

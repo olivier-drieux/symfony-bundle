@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-readonly class WebScrapingWebService extends AbstractWebService
+class WebScrapingWebService extends AbstractWebService
 {
     /**
      * WebScrapingWebService constructor.
@@ -19,24 +19,20 @@ readonly class WebScrapingWebService extends AbstractWebService
      */
     public function __construct(
         #[Autowire(env: 'PROXY_COMMON')]
-        private string $proxyCommon,
+        private readonly string $proxyCommon,
         #[Autowire(env: 'PROXY_GOOGLE')]
-        private string $proxyGoogle,
+        private readonly string $proxyGoogle,
         #[Autowire(env: 'PROXY_GOUV')]
-        private string $proxyGouv,
+        private readonly string $proxyGouv,
     ) {
         // Mandatory call to parent constructor
         parent::__construct();
     }
 
     /**
-     * @param string $uri
-     * @param string $device
      * @param array  $options default set to []
      * @param bool   $unsafe  default set to false
      * @param string $method  default set to 'GET'
-     *
-     * @return ResponseInterface
      *
      * @throws ExceptionInterface
      */
@@ -58,12 +54,8 @@ readonly class WebScrapingWebService extends AbstractWebService
     }
 
     /**
-     * @param string $uri
-     * @param string $device
-     * @param array  $options default set to []
-     * @param bool   $unsafe  default set to false
-     *
-     * @return ResponseInterface
+     * @param array $options default set to []
+     * @param bool  $unsafe  default set to false
      *
      * @throws ExceptionInterface
      */
@@ -87,12 +79,8 @@ readonly class WebScrapingWebService extends AbstractWebService
     }
 
     /**
-     * @param string $uri
-     * @param string $device
-     * @param array  $options default set to []
-     * @param bool   $unsafe  default set to false
-     *
-     * @return ResponseInterface
+     * @param array $options default set to []
+     * @param bool  $unsafe  default set to false
      *
      * @throws ExceptionInterface
      */

@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
 /**
- * @link https://symfony.com/doc/current/bundles/best_practices.html
+ * @see https://symfony.com/doc/current/bundles/best_practices.html
  */
 class WebAgencyExtension extends Extension implements PrependExtensionInterface
 {

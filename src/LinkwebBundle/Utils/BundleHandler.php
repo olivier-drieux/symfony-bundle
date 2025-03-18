@@ -1,20 +1,17 @@
 <?php
 
 namespace App\LinkwebBundle\Utils;
+
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class BundleHandler
+ * Class BundleHandler.
  */
 class BundleHandler
 {
     /**
-     * Check if the given env variables exist
-     *
-     * @param string             $bundleName
-     * @param ContainerInterface $container
-     * @param array              $setup
+     * Check if the given env variables exist.
      */
     public static function setup(string $bundleName, ContainerInterface $container, array $setup): void
     {
@@ -29,16 +26,12 @@ class BundleHandler
     }
 
     /**
-     * Check if the given env variables exist
-     *
-     * @param string             $bundleName
-     * @param ContainerInterface $container
-     * @param array              $envs
+     * Check if the given env variables exist.
      */
     public static function areEnvRegistered(string $bundleName, ContainerInterface $container, array $envs): void
     {
         // If no bundlesClass are provided
-        if(empty($envs)) {
+        if (empty($envs)) {
             return;
         }
 
@@ -52,16 +45,12 @@ class BundleHandler
     }
 
     /**
-     * Check if the given bundles are registered in the kernel
-     *
-     * @param string             $bundleName
-     * @param ContainerInterface $container
-     * @param array              $bundlesClass
+     * Check if the given bundles are registered in the kernel.
      */
     public static function areBundlesRegistered(string $bundleName, ContainerInterface $container, array $bundlesClass): void
     {
         // If no bundlesClass are provided
-        if(empty($bundlesClass)) {
+        if (empty($bundlesClass)) {
             return;
         }
 
@@ -76,15 +65,12 @@ class BundleHandler
     }
 
     /**
-     * Check if the given classes are available
-     *
-     * @param string $bundleName
-     * @param array  $neededClasses
+     * Check if the given classes are available.
      */
     public static function areClassesExisting(string $bundleName, array $neededClasses): void
     {
         // If no classes are provided
-        if(empty($neededClasses)) {
+        if (empty($neededClasses)) {
             return;
         }
 
@@ -99,7 +85,6 @@ class BundleHandler
     /**
      * Recursively merge configuration into Symfony's container.
      *
-     * @param ContainerBuilder $container
      * @param array $data Configuration data to merge
      */
     public static function mergeConfig(ContainerBuilder $container, array $data): void
@@ -125,11 +110,7 @@ class BundleHandler
     }
 
     /**
-     * Merge two arrays recursively without using array_merge_recursive
-     *
-     * @param array $array1
-     * @param array $array2
-     * @return array
+     * Merge two arrays recursively without using array_merge_recursive.
      */
     private static function mergeArrays(array $array1, array $array2): array
     {

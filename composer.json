@@ -7,12 +7,14 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "api-platform/core": "^4.1.1",
         "api-platform/doctrine-orm": "^4.1.1",
         "api-platform/symfony": "^4.1.1",
         "doctrine/dbal": "^3.9.4",
+        "linkweb/api-engine": "2.4.0",
         "doctrine/doctrine-bundle": "^2.13.2",
-        "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/orm": "^3.3.2",
+        "doctrine/doctrine-migrations-bundle": ">=3.4.1",
+        "doctrine/orm": "^2.20.2",
         "lexik/jwt-authentication-bundle": ">=3.1.1",
         "nelmio/cors-bundle": "^2.5",
         "phpdocumentor/reflection-docblock": "^5.6.1",
@@ -37,7 +39,14 @@
         "doctrine/doctrine-fixtures-bundle": "^4.0",
         "symfony/maker-bundle": "^1.62.1",
         "symfony/stopwatch": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/web-profiler-bundle": "7.2.*",
+        "friendsofphp/php-cs-fixer": "^3.72",
+        "phpmd/phpmd": "^2.15",
+        "phpstan/phpstan": "^1.12.21",
+        "phpstan/phpstan-strict-rules": "^1.6.2",
+        "roave/security-advisories": "dev-latest",
+        "symfony/doctrine-messenger": "^7.2.3",
+        "brainmaestro/composer-git-hooks": "^3.0"
     },
     "config": {
         "allow-plugins": {
@@ -78,7 +87,11 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "php-cs-fixer": "vendor/bin/php-cs-fixer fix src",
+        "phpmd": "vendor/bin/phpmd src tex",
+        "phpstan": "vendor/bin/phpstan analyse src",
+        "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -88,6 +101,13 @@
             "allow-contrib": false,
             "require": "7.2.*",
             "docker": true
+        },
+        "hooks": {
+            "pre-push": [
+                "./vendor/bin/phpstan analyse src --memory-limit=1G",
+                "./vendor/bin/php-cs-fixer fix src --dry-run --verbose",
+                "./vendor/bin/phpmd src"
+            ]
         }
     },
     "repositories": {

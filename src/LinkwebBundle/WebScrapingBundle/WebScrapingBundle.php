@@ -2,20 +2,19 @@
 
 namespace App\LinkwebBundle\WebScrapingBundle;
 
-use App\LinkwebBundle\Traits\AbstractBundleTrait;
-use App\LinkwebBundle\Utils\BundleHandler;
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle;
 use App\Entity\WebAgency;
+use App\LinkwebBundle\Utils\BundleHandler;
+use App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle;
+use App\LinkwebBundle\WebAgencyBundle\WebAgencyExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+
 /**
- * @link https://symfony.com/doc/current/bundles/best_practices.html
+ * @see https://symfony.com/doc/current/bundles/best_practices.html
  */
 class WebScrapingBundle extends AbstractBundle
 {
     /**
-     * @param ContainerBuilder $container
-     *
      * @throws \Exception
      */
     public function build(ContainerBuilder $container): void
@@ -26,7 +25,7 @@ class WebScrapingBundle extends AbstractBundle
             'WebScrapingBundle',
             $container,
             [
-                'envs' => ['DATABASE_USER'],
+                'envs' => ['PROXY_COMMON', 'PROXY_GOOGLE', 'PROXY_GOUV'],
                 'bundles' => [WebAgencyBundle::class],
                 'classes' => [WebAgency::class],
             ]

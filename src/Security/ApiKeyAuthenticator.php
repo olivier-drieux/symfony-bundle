@@ -38,6 +38,7 @@ class ApiKeyAuthenticator extends AbstractAuthenticator
                 if (!$user) {
                     throw new AuthenticationException('Invalid API key');
                 }
+
                 return $user;
             })
         );

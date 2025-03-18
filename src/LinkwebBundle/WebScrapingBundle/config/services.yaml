@@ -1,9 +1,0 @@
-services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        public: true
-
-    App\LinkwebBundle\WebAgencyBundle\Controller\:
-        resource: '../../Controller'
-        tags: ['controller.service_arguments']

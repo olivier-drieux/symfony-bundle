@@ -17,8 +17,6 @@ class WebAgencyRepository extends AbstractRepository
 {
     /**
      * WebAgencyRepository constructor.
-     *
-     * @param ManagerRegistry $registry
      */
     public function __construct(ManagerRegistry $registry)
     {
