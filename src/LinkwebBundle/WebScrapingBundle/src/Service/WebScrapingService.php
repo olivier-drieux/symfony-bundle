@@ -15,10 +15,7 @@ readonly class WebScrapingService
     /**
      * WebScrapingService constructor.
      */
-    public function __construct(
-        private LoggerInterface $logger,
-        private EntityManagerInterface $entityManager,
-    ) {
+    public function __construct(private EntityManagerInterface $entityManager) {
         // Nothing to do here
     }
 

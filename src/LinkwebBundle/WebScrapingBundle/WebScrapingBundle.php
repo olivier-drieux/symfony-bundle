@@ -5,7 +5,6 @@ namespace App\LinkwebBundle\WebScrapingBundle;
 use App\Entity\WebAgency;
 use App\LinkwebBundle\Utils\BundleHandler;
 use App\LinkwebBundle\WebAgencyBundle\WebAgencyBundle;
-use App\LinkwebBundle\WebAgencyBundle\WebAgencyExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
