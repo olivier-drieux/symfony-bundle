@@ -23,7 +23,8 @@ class WebAgencyExtension extends Extension implements PrependExtensionInterface
         $configs = [
             'doctrine_migrations' => [
                 'migrations_paths' => [
-                    'App\LinkwebBundle\WebAgencyBundle\src\Migrations' => '%kernel.project_dir%/src/LinkwebBundle/WebAgencyBundle/src/Migrations',
+                    // namespace => path
+                    'App\LinkwebBundle\WebAgencyBundle\src\Migrations' => __DIR__.'/src/Migrations',
                 ],
             ],
         ];
