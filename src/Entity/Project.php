@@ -29,6 +29,10 @@ class Project
     #[ApiFilter(SearchFilter::class, properties: ['projectMockups.domainName' => 'ipartial'])]
     private Collection $projectMockups;
 
+    #[ORM\ManyToOne(targetEntity: WebAgency::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private WebAgency $webAgency;
+
     /**
      * @var string
      */
@@ -116,6 +120,16 @@ class Project
         }
 
         return $this;
+    }
+
+    public function getWebAgency(): WebAgency
+    {
+        return $this->webAgency;
+    }
+
+    public function setWebAgency(WebAgency $webAgency): void
+    {
+        $this->webAgency = $webAgency;
     }
 
     /**

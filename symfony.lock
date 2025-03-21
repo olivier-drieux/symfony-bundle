@@ -65,7 +65,7 @@
         ]
     },
     "linkweb/shared-bundle": {
-        "version": "1.0.0"
+        "version": "dev-master"
     },
     "nelmio/cors-bundle": {
         "version": "2.5",
