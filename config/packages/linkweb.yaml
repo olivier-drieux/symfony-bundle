@@ -1,0 +1,2 @@
+shared:
+  web_agency_class: App\Entity\WebAgency

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20cea1911e37469bf3c148a1dd0b753c",
+    "content-hash": "7d78d0b93bf5d884fc55e6f3c54e72b0",
     "packages": [
         {
             "name": "api-platform/doctrine-common",
@@ -2736,7 +2736,7 @@
             "dist": {
                 "type": "path",
                 "url": "./SharedBundle",
-                "reference": "f2d14e51ab72d089b84fa3aa1ef46be78a3406ba"
+                "reference": "0bfc8d76c233b0d5166f2f6a6c093bdc3a56e6c1"
             },
             "require": {
                 "doctrine/migrations": "^3.8",
