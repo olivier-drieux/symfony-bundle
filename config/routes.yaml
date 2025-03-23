@@ -8,6 +8,7 @@ auth:
     path: /auth
     methods: ['POST']
 
-linkweb_shared_bundle:
-    resource: '@SharedBundle/src/Controller/'
-    type: attribute
+# The app must register the SharedBundle routes to be able to use them
+# See: https://github.com/symfony/symfony/discussions/49168#discussioncomment-4832140
+linkweb_shared:
+    resource: '@SharedBundle/config/routes.yaml'

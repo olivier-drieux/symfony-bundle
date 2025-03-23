@@ -1,2 +1,3 @@
 shared:
-  web_agency_class: App\Entity\WebAgency
+  entity:
+    web_agency_class: App\Entity\WebAgency
