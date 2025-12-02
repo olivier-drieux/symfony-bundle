@@ -1,0 +1,9 @@
+{
+    "name": "linkweb/shared-bundle",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "Linkweb\\SharedBundle\\": "src/"
+        }
+    }
+}
